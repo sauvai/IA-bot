@@ -1,0 +1,13 @@
+un tableau d'entity qui stock tout les elements de la map (pas les espaces vides)
+
+entity
+|_ bool collide(entity); (chaque classe re écrit collide)
+|_ list<pos> getPos() (renvoie les cases occupé par l'entité)
+|_ show(bool) (un element !show ne collide pas)
+|_ move (x, y) (move(+1, -4) par exemple (petit à petit jusqu'à destination ou collide))
+|_ rotate(turn) (nombre de tour positif droite, negatif gauche)
+
+pas de translation, move fait l'affaire
+
+[][] -> rotate (2) -> []
+  []                  [][]
