@@ -1,17 +1,31 @@
 class Entity {
-    constructor(pos, solid = true, lethal = false) {
-        this.posArr = [new Position(pos.x, pos.y)];
+    constructor(pos, width = 1, height = 1, size = 1, solid = true, lethal = false) {
+        this.matrix = new Matrix(pos, width, height);
+        this.size = size;
         this.show = true;
         this.solid = solid;
         this.lethal = lethal;
     }
 
+    getElementByIndex(index) {
+        return this.matrix.getElementById(index);
+    }
+
+    getElementByPos(x, y) {
+        return this.matrix.getElementByPos(x, y);
+    }
+
     collide(entity) {
-        // text('pos: ' + entity.pos.x + ', ' + entity.pos.y, 50, 20);
-        for (var i = 0; i < entity.posArr.length; i++) {
-            for (var y = 0; y < this.posArr.length; y++) {
-                if (entity.posArr[i].equal(this.posArr[y]))
+        for (var i = 0; i < entity.matrix.elements.length; i++) {
+            for (var j = 0; j < this.matrix.elements.length; j++) {
+
+                if (entity.matrix.elements[i] != 0 &&
+                    entity.solid && this.solid &&
+                    entity.show && this.show &&
+                    this.matrix.elements[j] != 0 &&
+                    entity.matrix.getPosFromIndex(i).equal(this.matrix.getPosFromIndex(j))) {
                     return true;
+                }
             }
         }
         return false;
@@ -21,16 +35,22 @@ class Entity {
         this.show = !show;
     }
 
+    getPos() {
+        return this.matrix.pos;
+    }
+
     move(x, y) { // x & y are "directions"
-        for (var i = 0; i < this.posArr.length; i++) {
-            this.posArr.move(x, y);
-        }
+        this.matrix.move(x, y);
     }
 
     rotate(turnNumber) {
-        var id; = (row * length_of_row) + column;
-        for (var i = 0; i < posArr.length; i++) {
-            id = posArr[i].x * posArr
-        }
+        this.matrix.rotate(turnNumber);
+    }
+
+    print() {
+        console.log('Show: ' + this.show);
+        console.log('Solid: ' + this.solid);
+        console.log('Lethal: ' + this.lethal);
+        this.matrix.print();
     }
 }
