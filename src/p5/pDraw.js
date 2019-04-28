@@ -6,7 +6,8 @@ class PDraw {
         this.canvasHeight = cHeight;
         this.fps = parFps;
 
-        createCanvas(this.canvasWidth, this.canvasHeight);
+        let canvas = createCanvas(this.canvasWidth, this.canvasHeight);
+        canvas.parent('CanvasHolder');
         frameRate(fps);
         strokeWeight(0);
     }
