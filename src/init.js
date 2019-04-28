@@ -10,6 +10,7 @@ let engine;
 let world;
 let gravityY = 0;
 let gravityX = 0;
+let boundaries = [];
 
 function initPDraw() {
     pDraw = new PDraw();
