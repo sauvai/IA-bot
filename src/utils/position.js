@@ -1,4 +1,4 @@
-class Position {
+class Pos {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -11,6 +11,15 @@ class Position {
     move(x, y) {
         this.x += x;
         this.y += y;
+        return new Pos(x, y);
+    }
+
+    moveCopy(x, y) {
+        return new Pos(this.x + x, this.y + y);
+    }
+
+    getCopy() {
+        return new Pos(this.x, this.y);
     }
 
     distance(pos) {
@@ -20,7 +29,7 @@ class Position {
     }
 
     pathToGo(pos) { //calculate the x and y moves need to get to a pos
-        var movePos = new Position(pos.x - this.x, pos.y - this.y);
+        var movePos = new Pos(pos.x - this.x, pos.y - this.y);
         return movePos;
     }
 
