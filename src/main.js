@@ -16,6 +16,13 @@ let boundaries = [];
 let player;
 let portal;
 
+$('#addBall').click(function () {
+    boxes.push(new Ball(new Pos(random(0 + 100, canvasWidth - 100), random(0 + 100, canvasHeight - 100)), random(10, 25), {
+        color: 'red'
+    }));
+    console.log('addBall');
+});
+
 function initPDraw() {
     pDraw = new PDraw();
     pDraw.initCanvas(canvasWidth, canvasHeight, fps)
@@ -34,9 +41,12 @@ function initMatter() {
 }
 
 function mousePressed() {
-    boxes.push(new Box(pDraw.mousePos(), random(10, 100), random(10, 100), {
-        color: 'red'
-    }));
+    var mousePos = pDraw.mousePos();
+    if (mousePos.x > 0 && mousePos.x < canvasWidth &&
+        mousePos.y > 0 && mousePos.y < canvasHeight)
+        boxes.push(new Box(mousePos, random(10, 100), random(10, 100), {
+            color: 'red'
+        }));
 }
 
 function setupPhysics() {
@@ -51,7 +61,7 @@ function setup() {
 
     var boundaryOption = {
         color: 'black',
-        friction: 0
+        friction: 0,
     }
 
     boundaries.push(new Boundary(new Pos(canvasWidth / 2, canvasHeight), canvasWidth, 30, boundaryOption));
@@ -68,7 +78,6 @@ function setup() {
     player = new Player(new Pos(50, 50), {
         color: 'blue'
     });
-    return;
 }
 
 function gameUpdate() {
