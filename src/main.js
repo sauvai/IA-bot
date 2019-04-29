@@ -12,12 +12,12 @@ function draw() {
     // Matter.Engine.update(engine);
 
     if (sketchMode == 'game') {
+        gameUpdate();
+        gameDraw();
+    } else if (sketchMode == 'editor') {
+        editorDraw();
+    }
 
-    } else if (sketchMode == 'editor') {}
-
-    gameUpdate();
-    gameDraw();
-    editorDraw();
 }
 
 function mouseReleased() {

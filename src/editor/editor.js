@@ -6,11 +6,11 @@ var startPos;
 var endPos;
 
 function editorDraw() {
-    // pDraw.drawBackground('white');
+    pDraw.drawBackground('white');
 
-    // for (var i = 0; i < boundaries.length; i++) {
-    //     boundaries[i].draw();
-    // }
+    for (var i = 0; i < boundaries.length; i++) {
+        boundaries[i].draw();
+    }
 
     for (var i = 0; i < boxes.length; i++) {
         boxes[i].draw();
