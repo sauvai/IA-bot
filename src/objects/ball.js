@@ -4,10 +4,11 @@ class Ball {
             color: 'black',
             frictionAir: 0.1
         }
-        this.options = Utils.extend(this.options, options);
+        if (typeof options != 'undefined')
+            this.options = Utils.extend(this.options, options);
         this.speed = this.options.speed;
         this.radius = radius;
-        this.color = options.color;
+        this.color = this.options.color;
         this.body = Matter.Bodies.circle(p.x, p.y, this.radius, this.options);
         Matter.World.add(world, this.body);
     }
@@ -17,6 +18,7 @@ class Ball {
         this.pos = new Pos(p.x, p.y)
         var angle = this.body.angle;
 
+        pDraw.drawMode = CENTER;
         pDraw.pushAppearance();
         pDraw.translateDrawing(this.pos);
         pDraw.rotateDrawing(angle, RADIANS);

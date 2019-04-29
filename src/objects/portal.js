@@ -9,10 +9,8 @@ class Portal {
 
 
         var option1 = Utils.extend(this.options, options);
-        option1.color = option1.color1;
 
         var option2 = Utils.extend(this.options, options);
-        option2.color = option2.color2;
 
         this.portal1 = new Ball(p1, this.radius, option1);
         this.portal2 = new Ball(p2, this.radius, option2);

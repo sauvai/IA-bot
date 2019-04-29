@@ -5,6 +5,7 @@ class PDraw {
         this.canvasWidth = cWidth;
         this.canvasHeight = cHeight;
         this.fps = parFps;
+        this.drawMode = CENTER;
 
         let canvas = createCanvas(this.canvasWidth, this.canvasHeight);
         canvas.parent('CanvasHolder');
@@ -38,9 +39,9 @@ class PDraw {
     }
 
     setAppearance(fillColor = 'white', strokeColor = 'white') {
-        rectMode(CENTER);
-        ellipseMode(CENTER);
-        imageMode(CENTER);
+        rectMode(this.drawMode);
+        ellipseMode(this.drawMode);
+        imageMode(this.drawMode);
         stroke(strokeColor);
         fill(color(fillColor));
     }
@@ -79,7 +80,6 @@ class PDraw {
         this.setAppearance(fillColor, strokeColor);
 
         rect(p.x, p.y, width, height);
-
         return p.getCopy();
     }
 

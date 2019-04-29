@@ -1,4 +1,4 @@
-let sketchMode = 'game';
+let sketchMode = 'editor';
 
 function setup() {
     initPDraw();
@@ -9,12 +9,19 @@ function setup() {
 
 function draw() {
     //update
-    Matter.Engine.update(engine);
+    // Matter.Engine.update(engine);
 
     if (sketchMode == 'game') {
-        gameUpdate();
-        gameDraw();
-    }
+
+    } else if (sketchMode == 'editor') {}
+
+    gameUpdate();
+    gameDraw();
+    editorDraw();
+}
+
+function mouseReleased() {
+    mouseButton = '';
 }
 
 function keyReleased() {

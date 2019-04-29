@@ -17,12 +17,6 @@ function initPDraw() {
     pDraw.initCanvas(canvasWidth, canvasHeight, fps)
 }
 
-function initGame() {
-    player = new Player(new Pos(50, 50), {
-        color: 'blue'
-    });
-}
-
 function initMap() {
     var boundaryOption = {
         color: 'black',

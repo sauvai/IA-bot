@@ -30,6 +30,7 @@ class Player {
     draw() {
         var pos = new Pos(this.body.position.x, this.body.position.y)
 
+        pDraw.drawMode = CENTER;
         pDraw.pushAppearance();
         pDraw.translateDrawing(pos);
         pDraw.rotateDrawing(this.body.angle, RADIANS);

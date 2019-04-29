@@ -4,10 +4,13 @@ class Box {
             color: 'black',
             angle: 0
         }
+        if (typeof options != 'undefined')
+
+            this.options = Utils.extend(this.options, options);
         this.width = width;
         this.height = height;
-        this.color = options.color;
-        this.body = Matter.Bodies.rectangle(p.x, p.y, this.width, this.height, Utils.extend(this.options, options));
+        this.color = this.options.color;
+        this.body = Matter.Bodies.rectangle(p.x, p.y, this.width, this.height, this.options);
         this.body.angle = this.options.angle;
         Matter.World.add(world, this.body);
     }
@@ -17,6 +20,7 @@ class Box {
         this.pos = new Pos(p.x, p.y)
         var angle = this.body.angle;
 
+        pDraw.drawMode = CENTER;
         pDraw.pushAppearance();
         pDraw.translateDrawing(this.pos);
         pDraw.rotateDrawing(angle, RADIANS);
